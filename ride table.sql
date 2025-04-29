@@ -1,0 +1,56 @@
+CREATE TABLE rides (
+	STARTSTATIONNAME TEXT,
+	STARTSTATIONARRONDISSEMENT TEXT,
+	STARTSTATIONLATITUDE NUMERIC,
+	STARTSTATIONLONGITUDE NUMERIC,
+	ENDSTATIONNAME TEXT,
+	ENDSTATIONARRONDISSEMENT TEXT,
+  	ENDSTATIONLATITUDE NUMERIC,
+  	ENDSTATIONLONGITUDE NUMERIC,
+  	STARTTIMEMS bigint,
+  	ENDTIMEMS bigint
+);
+
+COPY rides(
+	STARTSTATIONNAME, 
+	STARTSTATIONARRONDISSEMENT, 
+	STARTSTATIONLATITUDE, 
+	STARTSTATIONLONGITUDE, 
+	ENDSTATIONNAME, 
+	ENDSTATIONARRONDISSEMENT, 
+	ENDSTATIONLATITUDE,
+	ENDSTATIONLONGITUDE, 
+	STARTTIMEMS,
+	ENDTIMEMS)
+FROM 'C:\Users\nguye\Documents\CONCORDIA\personal project\DonneesOuvertes2023_12/DonneesOuvertes (1).csv'
+DELIMITER ','
+CSV HEADER
+ENCODING 'UTF8';
+
+
+ALTER TABLE rides
+ALTER COLUMN starttimems TYPE timestamptz USING to_timestamp(starttimems::float8/1000) AT time zone 'UTC';
+ALTER TABLE rides
+ALTER COLUMN endtimems TYPE timestamptz USING to_timestamp(endtimems::float8/1000) AT time zone 'UTC';
+
+ALTER TABLE rides
+RENAME COLUMN starttimems TO starttime;
+ALTER TABLE rides
+RENAME COLUMN endtimems TO endtime;
+
+--To have proper analysis, I ran the following queries to visualize the missing values
+SELECT count (*) FROM rides
+WHERE STARTSTATIONNAME IS NULL
+OR ENDSTATIONNAME IS NULL
+OR STARTTIME IS NULL
+OR ENDTIME IS NULL
+
+SELECT * FROM rides
+WHERE STARTSTATIONNAME IS NULL
+OR ENDSTATIONNAME IS NULL
+OR STARTTIME IS NULL
+OR ENDTIME IS NULL
+/* there are 4 cases of missing values.
+in total there are 71 115 trips that have missing values in one of the fields above.
+there are trips that:
+(1) 
