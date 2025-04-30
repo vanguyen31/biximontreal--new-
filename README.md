@@ -10,7 +10,7 @@ Leveraged BIXI’s open data (https://bixi.com/en/open-data/) to create assumpti
 
 **Data Description**
 
-To make sure that the data is relevant, I picked the dataset of 2023. (That of 2024 failed to open). The table includes +1M rows and 10 columns:
+To make sure that the data is relevant, I picked the dataset of 2023. (That of 2024 failed to open). The table includes +11 M rows and 10 columns:
 
 **1. StartStationName** i.e St-Hubert / de Maisonneuve (sud)
 <br>
