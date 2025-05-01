@@ -1,4 +1,4 @@
-# BIXI Operations Insights: Simulated Data Analysis Using SQL and Power BI
+# Analyzing BIXI Montréal Usage Trends to Inform Operational and Strategic Decisions
 Leveraged BIXI’s open data (https://bixi.com/en/open-data/) to create assumption-based relational database in PostgreSQL and a dynamic Power BI dashboard, providing insights into usage patterns, maintenance needs, and system optimization. (On-going project)
 <br>
 # Project Overview:
