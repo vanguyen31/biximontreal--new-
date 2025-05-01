@@ -160,7 +160,20 @@ malfunction system at dock (ie faulty RFID tag, sensor, or network lag.),
 Maintenance staff might have redeployed the bike manually without scanning it into the system.
 */
 
+--I filted out the trips with missing values into 3 categories: to be removed(due to abnormally long duration), to be imputed the station, to be reviewed
+SELECT *,
+  CASE
+    WHEN missing_value_cases = 'CASE 2' AND duration_minutes > 1440 THEN 'remove_extreme_duration'
+    WHEN missing_value_cases = 'CASE 2' AND duration_minutes <= 720 THEN 'impute_endstation'
+    WHEN missing_value_cases = 'CASE 2' THEN 'review'
 
+    WHEN missing_value_cases = 'CASE 3' AND duration_minutes > 1440 THEN 'remove_extreme_duration'
+    WHEN missing_value_cases = 'CASE 3' AND duration_minutes <= 30 THEN 'impute_startstation'
+    WHEN missing_value_cases = 'CASE 3' THEN 'review'
+
+    ELSE 'keep'
+  END AS data_quality_flag
+FROM rides;
 
 /* (draft add this later)
 -- CASE 2: For missing endstationname, find common destinations for same startstation & similar duration
