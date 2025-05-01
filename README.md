@@ -35,48 +35,44 @@ To make sure that the data is relevant, I picked the dataset of 2023. (That of 2
 
 **Data Acquisition & Exploration** 
 
-Downloaded raw CSV files containing millions of trip records.
+  * Downloaded raw CSV files containing millions of trip records.
 
-Reviewed schema for relevant attributes: start/end times, station IDs, bike types, membership status, trip duration.
+  * Reviewed schema for relevant attributes: start/end times, station IDs, bike types, membership status, trip duration.
 
 **Data Preprocessing & Cleaning (SQL)** 
 
-Handled missing and inconsistent data entries (e.g., null station names, negative durations).
+  * Handled missing and inconsistent data entries (e.g., null station names, negative durations).
 
-Normalized timestamps, standardized location formats, and created derived fields (e.g., day of week, ride length in minutes).
+  * Normalized timestamps, standardized location formats, and created derived fields (e.g., day of week, ride length in minutes).
 
-Merged station metadata to enrich trip records with location details.
+  * Merged station metadata to enrich trip records with location details.
 
 **Exploratory Data Analysis (SQL)**
 
-Queried trends over time, such as monthly usage and differences between member and casual users.
+  * Queried trends over time, such as monthly usage and differences between member and casual users.
 
-Calculated KPIs: average trip duration, most/least used stations, peak hours, and trip frequency by weekday.
+  * Calculated KPIs: average trip duration, most/least used stations, peak hours, and trip frequency by weekday.
 
-Identified seasonal trends and anomalies (e.g., drastic drops or spikes in ridership).
+  * Identified seasonal trends and anomalies (e.g., drastic drops or spikes in ridership).
 
 **Data Visualization (Power BI)**
 
-Built interactive dashboards highlighting:
+  * Built interactive dashboards highlighting:
 
-Rider demographics and membership patterns.
+  * Rider demographics and membership patterns.
 
-Station heatmaps by usage frequency.
+  * Station heatmaps by usage frequency.
 
-Time-based visualizations (hourly, daily, seasonal).
+  * Time-based visualizations (hourly, daily, seasonal).
 
-Bike type comparison: electric vs regular.
+  * Bike type comparison: electric vs regular.
 
-Included slicers and filters to let users explore specific neighborhoods or time frames.
+  * Included slicers and filters to let users explore specific neighborhoods or time frames.
 
 ## Key Findings
-
+*(coming soon)*
 
 
 ## Business Value & Recommendations
+*(coming soon)*
 
-BIXI could optimize fleet allocation and maintenance schedules using peak usage insights.
-
-City planners could use heatmaps to expand or relocate stations for better coverage.
-
-Marketing can tailor efforts toward casual riders during off-peak months to increase utilization.
