@@ -37,7 +37,7 @@ To make sure that the data is relevant, I picked the dataset of 2023. (That of 2
 
   * Downloaded raw CSV files containing millions of trip records.
 
-  * Reviewed schema for relevant attributes: start/end times, station IDs, bike types, membership status, trip duration.
+  * Reviewed schema for relevant attributes: start/end times, station IDs, membership status, trip duration.
 
 **Data Preprocessing & Cleaning (SQL)** 
 
@@ -55,17 +55,13 @@ To make sure that the data is relevant, I picked the dataset of 2023. (That of 2
 
   * Identified seasonal trends and anomalies (e.g., drastic drops or spikes in ridership).
 
-**Data Visualization (Power BI)**
-
-  * Built interactive dashboards highlighting:
+**Data Visualization (Power BI)** : Built interactive dashboards highlighting:
 
   * Rider demographics and membership patterns.
 
   * Station heatmaps by usage frequency.
 
   * Time-based visualizations (hourly, daily, seasonal).
-
-  * Bike type comparison: electric vs regular.
 
   * Included slicers and filters to let users explore specific neighborhoods or time frames.
 
