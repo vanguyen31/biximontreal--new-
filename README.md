@@ -6,8 +6,6 @@ Leveraged BIXI’s open data (https://bixi.com/en/open-data/) to create assumpti
 
 **As of January 1st, 2025, BIXI Montréal began offering year-round service, including the winter months, following the success of its pilot project** (**Source**: https://bixi.com/en/bixi-year-round/). This expansion emphasizes the need for accurate data management and a deep understanding of user preferences and seasonal patterns. More specifically, it is crucial to ensure that stations remain adequately stocked with bikes, identify high-demand areas, and adjust operations accordingly to maintain service quality and meet user expectations throughout the year.
 
-## Approach and Process
-
 **Data Description**
 
 To make sure that the data is relevant, I picked the dataset of 2023. (That of 2024 failed to open). The table includes +11 M rows and 10 columns:
@@ -33,7 +31,52 @@ To make sure that the data is relevant, I picked the dataset of 2023. (That of 2
 **10. EndTimeMs** i.e	1.68139E+12
 <br>
 
-**Data Preprocessing**
-- As both of Start time and End time were recorded as Unix timestamp in miliseconds, I loaded the dataset into PostgreSQL to convert it into a readable format (i.e
+## Project Workflow
+
+**Data Acquisition & Exploration** 
+
+Downloaded raw CSV files containing millions of trip records.
+
+Reviewed schema for relevant attributes: start/end times, station IDs, bike types, membership status, trip duration.
+
+**Data Preprocessing & Cleaning (SQL)** 
+
+Handled missing and inconsistent data entries (e.g., null station names, negative durations).
+
+Normalized timestamps, standardized location formats, and created derived fields (e.g., day of week, ride length in minutes).
+
+Merged station metadata to enrich trip records with location details.
+
+**Exploratory Data Analysis (SQL)**
+
+Queried trends over time, such as monthly usage and differences between member and casual users.
+
+Calculated KPIs: average trip duration, most/least used stations, peak hours, and trip frequency by weekday.
+
+Identified seasonal trends and anomalies (e.g., drastic drops or spikes in ridership).
+
+**Data Visualization (Power BI)**
+
+Built interactive dashboards highlighting:
+
+Rider demographics and membership patterns.
+
+Station heatmaps by usage frequency.
+
+Time-based visualizations (hourly, daily, seasonal).
+
+Bike type comparison: electric vs regular.
+
+Included slicers and filters to let users explore specific neighborhoods or time frames.
+
+## Key Findings
 
 
+
+## Business Value & Recommendations
+
+BIXI could optimize fleet allocation and maintenance schedules using peak usage insights.
+
+City planners could use heatmaps to expand or relocate stations for better coverage.
+
+Marketing can tailor efforts toward casual riders during off-peak months to increase utilization.
