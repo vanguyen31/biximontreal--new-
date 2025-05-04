@@ -26,4 +26,22 @@ As CASE 1 and CASE 4 miss too much information for it to be useful I remove them
    * 'impute station'
    * 'review'
    * 'keep'
-   
+
+
+Before investigation, please keep in mind that after 24 hours, the bike is presumed stolen and user is charged up to $2,000 according to the website of BIXI (https://bixi.com/en/how-to-use-the-bixi-service/#:~:text=Yes%2C%2024%20consecutive%20hours!,you%20are%20finished%20riding%20it.)
+
+
+**CASE 2: missing endstationname (6 397 trips)**
+I categorize the trips by duration range:
+| duration_range | trip_count |	percentage_of_total |
+| ------- | ------- |	------- |
+| 1. Under 5 mins | 913 |	14 |
+|2. 5-10 mins |	1847 |	29 |
+|3. 11-20 mins|	1605|	25|
+|4. 21-30 mins|	424|	7|
+|5. 31-60 mins|	177|	3|
+|6. 1-12 hours|	744|	12|
+|7. 12-24 hours|	307|	5|
+|8. Over 24 hours|	380|	6|
+
+I look into the 380 trips that last longer than 24 hours to see 
