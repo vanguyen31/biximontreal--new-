@@ -61,6 +61,8 @@ For investigation, there are 2 things to look at: trend by time (ie month, day a
 |2023-12-01 00:00:00-05|	95727|	122|	0.13|
 |2024-01-01 00:00:00-05|	398|	1|	0.25|
 
+**Key takeaway:** Oct, Nov, Dec and Jan of 2024 witnessed higher proportion of trips with missing endstationname.
+
 **2. Trend by Hour of day:**
 | hour_of_day | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
@@ -88,3 +90,23 @@ For investigation, there are 2 things to look at: trend by time (ie month, day a
 |21	|1155112	|386	|0.03|
 |3	|360396	|105	|0.03|
 |22	|995322	|316	|0.03|
+
+**Key takeaway:** 9AM - 1PM is the time range with the highest likelihood of trips with missing endstationname. 
+
+**3. Trend by Day of week:**
+| day_of_week | total_trips | case_2_trips | percent_case_2 |
+| -------| ------- | ------- | ------- |
+|Tuesday  |	1632793|	1288|	0.08|
+|Wednesday|	1698888|	1203|	0.07|
+|Thursday |	1741812|	1080|	0.06|
+|Monday   |	1492410|	819|	0.05|
+|Friday   |	1827299|	957|	0.05|
+|Saturday |	1739786|	676|	0.04|
+|Sunday   |	1596814|	374|	0.02|
+
+**Key takeaway:** There is no specific day that has a concentrated amount of CASE 2 trips. 
+
+Now that I identified the trends by time, I would investigate further by looking at the start stations that have trips within the time range of 9AM-1PM and month range of Sept-Jan.
+High proportion of such trips in any stations indicates the system errors of the dock. 
+To prevent skew in small-sample data
+
