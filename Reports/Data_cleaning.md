@@ -1,4 +1,4 @@
-This is a report on the missing values of the *Ride table* and how I handled them:
+mThis is a report on the missing values of the *Ride table* and how I handled them:
 \
 \
 **There are 4 types of trips that miss values.**\
@@ -106,7 +106,18 @@ For investigation, there are 2 things to look at: trend by time (ie month, day a
 
 **Key takeaway:** There is no specific day that has a concentrated amount of CASE 2 trips. 
 
-Now that I identified the trends by time, I would investigate further by looking at the start stations that have trips within the time range of 9AM-1PM and month range of Sept-Jan.
-High proportion of such trips in any stations indicates the system errors of the dock. 
-To prevent skew in small-sample data
+Now that I identified the trends by time, I would investigate further by looking at the start stations that have trips within the time range of 9AM-1PM and month range of Sept-Jan.\
+High proportion of such trips in any stations indicates high likelihood of system errors of the dock. \
+To prevent skew in small-sample data, I removed stations that the incident happended once. I compared the amount case_2_trips with the amount of total_trips in mentioned time frames.\
+There are 256 stations with the percentage range goes from 0.17% to 10.53%. Below are the top 4:
+| startstationame | total_trips | case_2_trips | percent_case_2 |
+| -------| ------- | ------- | ------- |
+|Natatorium (LaSalle / Rolland)|	114|	12|	10.53|
+|Bélanger / des Galeries d'Anjou|	25|	2|	8.00|
+|Fabre / St-Zotique|	714|	29|	4.06|
+|Bourgeoys / Favard|	604|	20|	3.31|
 
+**Key takeaway:** 
+- There are 3 docks that have high volumes of trips during the specified time periods, espcially Natatorium (LaSalle / Rolland) which also has huge amount of Case 2 trips.
+- Bélanger / des Galeries d'Anjou has high percentage yet the amount of total usage is not really noticeable.
+- The priority of maintenance should be 1 - 3 - 4 - 2 given that the stations are placed in the order of ascending number.
