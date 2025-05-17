@@ -1,4 +1,4 @@
-mThis is a report on the missing values of the *Ride table* and how I handled them:
+This is a report on the missing values of the *Ride table* and how I handled them:
 \
 \
 **There are 4 types of trips that miss values.**\
