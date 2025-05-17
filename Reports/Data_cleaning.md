@@ -90,4 +90,15 @@ There are 256 stations with the percentage range goes from 0.17% to 10.53%. Belo
 - Consider additional logging or alerts for stations with high failure rates.
 
 ## Focus Analysis - CASE 3: missing startstationname (3 698 trips)
+__Trip duration distribution__
+| duration_range | trip_count |	percentage_of_total |
+| ------- | ------- |	------- |
+| 1. < 5 mins | 788 |	21 |
+|2. 5-10 mins |	1334 |	36 |
+|3. 11-20 mins|	1094|	30|
+|4. 21-30 mins|	269|	7|
+|5. 31-60 mins|	120|	3|
+|6. 1-12 hours|	22|	1|
+|7. 12-24 hours|	3|	0|
+|8. Over 24 hours|	68|	2|
 
