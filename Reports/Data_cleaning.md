@@ -45,69 +45,33 @@ __Trip duration distribution__
 |8. Over 24 hours|	380|	6|
 
 For investigation, there are 2 things to look at: trend by time (ie month, day and hour) and start station analysis.\
-**1. Trend by Month:**
+**1. Trend by Month:** higher proportions in fall/winter
 
 | month | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
-|2023-04-01 00:00:00-04|	667563|	220|	0.03|
-|2023-05-01 00:00:00-04|	1578155|	250|	0.02|
-|2023-06-01 00:00:00-04|	1674507|	301|	0.02|
-|2023-07-01 00:00:00-04|	1823788|	210|	0.01|
-|2023-08-01 00:00:00-04|	1864361|	608|	0.03|
-|2023-09-01 00:00:00-04|	1924600|	1115|	0.06|
 |2023-10-01 00:00:00-04|	1450279|	2041|	0.14|
 |2023-11-01 00:00:00-04|	650424|	1529|	0.24|
 |2023-12-01 00:00:00-05|	95727|	122|	0.13|
 |2024-01-01 00:00:00-05|	398|	1|	0.25|
 
-**Key takeaway:** Oct, Nov, Dec and Jan of 2024 witnessed higher proportion of trips with missing endstationname.
-
-**2. Trend by Hour of day:**
+**2. Trend by Hour of day:** peak between 9AM - 1PM
 | hour_of_day | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
+|9	|49334	|66	|0.13|
 |10	|125197	|349	|0.28|
 |11	|341797	|503	|0.15|
-|9	|49334	|66	|0.13|
 |12	|604039	|755	|0.12|
 |13	|451368	|529	|0.12 |
-|14	|419519	|366	|0.09|
-|7	|85074	|56	|0.07|
-|16	|613160	|365	|0.06|
-|15	|511875	|323	|0.06|
-|8	|43982	|24	|0.05|
-|17	|639501	|288	|0.05|
-|5	|167704	|81	|0.05|
-|0	|647611	|263	|0.04|
-|1	|530359	|218	|0.04|
-|2	|443398	|165	|0.04|
-|4	|247650	|107	|0.04|
-|6	|112693	|44	|0.04|
-|18	|659747	|251	|0.04|
-|19	|763491	|294	|0.04|
-|23	|806664	|242	|0.03|
-|20	|954809	|301	|0.03|
-|21	|1155112	|386	|0.03|
-|3	|360396	|105	|0.03|
-|22	|995322	|316	|0.03|
 
-**Key takeaway:** 9AM - 1PM is the time range with the highest likelihood of trips with missing endstationname. 
-
-**3. Trend by Day of week:**
+**3. Trend by Day of week:** no single day stands out significantly
 | day_of_week | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
 |Tuesday  |	1632793|	1288|	0.08|
 |Wednesday|	1698888|	1203|	0.07|
-|Thursday |	1741812|	1080|	0.06|
-|Monday   |	1492410|	819|	0.05|
-|Friday   |	1827299|	957|	0.05|
-|Saturday |	1739786|	676|	0.04|
-|Sunday   |	1596814|	374|	0.02|
 
-**Key takeaway:** There is no specific day that has a concentrated amount of CASE 2 trips. 
+## Station-Level Analysis - CASE 2: missing endstationname (6 397 trips)
+Filtered for stations with ≥2 CASE 2 trips during Sept–Jan and 9AM–1PM. One-off incidents were excluded to prevent skew.
 
-Now that I identified the trends by time, I would investigate further by looking at the start stations that have trips within the time range of 9AM-1PM and month range of Sept-Jan.\
-High proportion of such trips in any stations indicates high likelihood of system errors of the dock. \
-To prevent skew in small-sample data, I removed stations that the incident happended once. I compared the amount case_2_trips with the amount of total_trips in mentioned time frames.\
 There are 256 stations with the percentage range goes from 0.17% to 10.53%. Below are the top 4:
 | startstationame | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
@@ -116,7 +80,14 @@ There are 256 stations with the percentage range goes from 0.17% to 10.53%. Belo
 |Fabre / St-Zotique|	714|	29|	4.06|
 |Bourgeoys / Favard|	604|	20|	3.31|
 
-**Key takeaway:** 
-- There are 3 docks that have high volumes of trips during the specified time periods, espcially Natatorium (LaSalle / Rolland) which also has huge amount of Case 2 trips.
-- Bélanger / des Galeries d'Anjou has high percentage yet the amount of total usage is not really noticeable.
-- The priority of maintenance should be 1 - 3 - 4 - 2 given that the stations are placed in the order of ascending number.
+**Recommendations:** 
+- Prioritize maintenance at the following stations: 
+   1. Natatorium (LaSalle / Rolland)
+   2. Fabre / St-Zotique
+   3. Bourgeoys / Favard
+   4. Bélanger / des Galeries d'Anjou (low usage, monitor only)
+- Further investigate trips in the 9AM–1PM window between Sept–Jan for recurring issues.
+- Consider additional logging or alerts for stations with high failure rates.
+
+## Focus Analysis - CASE 3: missing startstationname (3 698 trips)
+
