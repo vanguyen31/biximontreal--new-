@@ -1,6 +1,8 @@
-This is a report on the missing values of the *Ride table* and how I handled them:
-\
-\
+# Missing Values Analysis – _Ride_ Table
+This is a report on the missing values of the *Ride table* and how I handled them
+
+
+## Overview of Missing data
 **There are 4 types of trips that miss values.**\
 In total there are **71 115 trips** that have missing values in one of the fields following: **endstationname, startstationname, endtime, starttime.**
 There are trips that:
@@ -10,19 +12,17 @@ There are trips that:
 4. don't have startstationname nor endstationname (282 trips)
 
 
-I categorized the 4 types of trips into 4 CASES *from top to bottom* for better filtering and analysis. \
-CASE 1 and CASE 4: removed as they miss too much information to be useful
-CASE 2 and CASE 3: investigate more
+I categorized the 4 types of trips into 4 CASES *from top to bottom* for better filtering and analysis. 
++ CASE 1 and CASE 4: removed as they miss too much information to be useful
++ CASE 2 and CASE 3: investigate more for potention inclusion
 
-**4 steps are done for investigation:**
-1. Profile the affected rows: looking at other fields for trips with missing data
-   * Duration
-   * Time
-   * Start or End station (if available)
-2. Access plausibility to see if the logic is consistent
-3. Compare with complete trips to answer the question *"Are the incomplete trips anomalies or part of a pattern?"*
-4. Investigate outliers (ie those with durations > 1440 minutes/24 hours)
-5. Create a data_quality_flag
+## Investigation Methodology
+For CASE 2 and CASE 3, a 5-step process was followed:
+1. __Profiling__ affected rows based on duration, time, and available station info.
+2. __Plausibility checks__ to ensure logical consistency.
+3. __Comparative analysis__ with complete trips to identify anomalies or patterns to answer the question *"Are the incomplete trips anomalies or part of a pattern?"*
+4. __Outlier detection__, particularly durations exceeding 24 hours 
+5. __Flagging__ data quality issues using a data_quality_flag:
    * 'remove_extreme_duration'
    * 'impute station'
    * 'review'
@@ -31,12 +31,11 @@ CASE 2 and CASE 3: investigate more
 
 Before investigation, please keep in mind that after 24 hours, the bike is presumed stolen and user is charged up to $2,000 according to the website of BIXI (https://bixi.com/en/how-to-use-the-bixi-service/#:~:text=Yes%2C%2024%20consecutive%20hours!,you%20are%20finished%20riding%20it.)
 
-
-**CASE 2: missing endstationname (6 397 trips)**
-I categorize the trips by duration range:
+## Focus Analysis - CASE 2: missing endstationname (6 397 trips)
+__Trip duration distribution__
 | duration_range | trip_count |	percentage_of_total |
 | ------- | ------- |	------- |
-| 1. Under 5 mins | 913 |	14 |
+| 1. < 5 mins | 913 |	14 |
 |2. 5-10 mins |	1847 |	29 |
 |3. 11-20 mins|	1605|	25|
 |4. 21-30 mins|	424|	7|
