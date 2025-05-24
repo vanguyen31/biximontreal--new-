@@ -47,12 +47,12 @@ __Trip duration distribution__
 For investigation, there are 2 things to look at: trend by time (ie month, day and hour) and start station analysis.\
 **1. Trend by Month:** higher proportions in fall/winter
 
-| month | total_trips | case_2_trips | percent_case_2 |
+| year_month | total_trips | case_2_trips | percent_case_2 |
 | -------| ------- | ------- | ------- |
-|2023-10-01 00:00:00-04|	1450279|	2041|	0.14|
-|2023-11-01 00:00:00-04|	650424|	1529|	0.24|
-|2023-12-01 00:00:00-05|	95727|	122|	0.13|
-|2024-01-01 00:00:00-05|	398|	1|	0.25|
+|2023-10|	1450279|	2041|	0.14|
+|2023-11|	650424|	1529|	0.24|
+|2023-12|	95727|	122|	0.13|
+|2024-01|	398|	1|	0.25|
 
 **2. Trend by Hour of day:** peak between 9AM - 1PM
 | hour_of_day | total_trips | case_2_trips | percent_case_2 |
