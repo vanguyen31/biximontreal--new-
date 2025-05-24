@@ -1,11 +1,3 @@
---To have proper analysis, I ran the following queries to visualize the missing values
---The following queries are used to view all trips with missing values.
-SELECT count (*) FROM rides
-WHERE STARTSTATIONNAME IS NULL
-or ENDSTATIONNAME IS NULL
-or STARTTIME IS NULL
-or ENDTIME IS NULL
-
 --I ran variations of these queries to see the number of trips of 4 different value missing cases
 SELECT count (*) FROM rides
 WHERE STARTSTATIONAME IS NULL
@@ -13,15 +5,7 @@ and ENDSTATIONNAME IS not NULL
 and ENDTIME IS NULL
 and STARTTIME IS not NULL
 
-/* there are 4 cases of missing values.
-in total there are 71 115 trips that have missing values in one of the fields above.
-there are trips that:
-(1) don't have endstationname nor endtime (60 778)
-(2) don't have endstationname (6 397)
-(3) don't have startstationname(3 698)
-(4) don't have startstationname nor endstationname (282)
-*/
-
+--I created a column to flag the cases
 ALTER TABLE rides
 ADD COLUMN missing_value_cases TEXT;
 
@@ -56,11 +40,7 @@ I removed them from the dataset
 DELETE FROM rides
 WHERE missing_value_cases IN ('CASE 1', 'CASE 4');
 
-/*
-to investigate CASE 2 (missing endstationanme) and CASE 3 (missing startstationname),
-there are several things I wanna look at.
-First, I wanna check the duration to see if there are any abnormal durations (ie too short or too long)
-*/
+--I created a column of duration in minutes
 ALTER TABLE rides
 ADD COLUMN duration_minutes INT;
 
