@@ -48,6 +48,7 @@ UPDATE rides
 SET duration_minutes = FLOOR (EXTRACT(EPOCH FROM (endtime-starttime))/60);
 
 --CASE 2: miss endstation
+--I categorized the trips in case 2 by the duration range asc
 SELECT 
   CASE 
     WHEN duration_minutes < 5 THEN '1. Under 5 mins'
@@ -65,12 +66,26 @@ FROM rides
 WHERE missing_value_cases = 'CASE 2'
 GROUP BY duration_range
 ORDER BY duration_range asc;
-/*
-The outcome told me that most of the trips last between 5-20 minutes. 
-There are 307 trips that last from 12-24 hours,
-and 380 trips that last over 24 hours, which is considered stolen according to BIXI website
-(https://bixi.com/en/how-to-use-the-bixi-service/#:~:text=Yes%2C%2024%20consecutive%20hours!,you%20are%20finished%20riding%20it.)
-*/
+
+--I counted the number of case 2 trips vs total number of trips by months
+select 
+	to_char (starttime, 'YYYY-MM') as year_month,
+	count (*) as total_trips,
+	sum (case when missing_value_cases = 'CASE 2' then 1 else 0 end) as case_2_trips,
+	round(
+		sum (case when missing_value_cases = 'CASE 2' then 1 else 0 end)*100.0/count (*),2
+	) as percent_case_2
+from 
+	rides
+group by 
+	to_char (starttime, 'YYYY-MM')
+order by 
+	year_month asc;
+
+
+
+
+
 
 SELECT COUNT(*) as count_trip_over_24_hours, startstationname, startstationarrondissement
 from rides
