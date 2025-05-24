@@ -1,5 +1,5 @@
 # Missing Values Analysis – _Ride_ Table
-This is a report on the missing values of the *Ride table* and how I handled them
+This is a report on the missing values of the *Ride table* and how I handled them. For the queries, please check out **imputing_missing_value.sql** under Folder **sql_script**
 
 
 ## Overview of Missing data
