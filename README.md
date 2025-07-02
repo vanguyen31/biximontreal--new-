@@ -36,38 +36,29 @@ To make sure that the data is relevant, I picked the dataset of 2023. (That of 2
 **Data Acquisition & Exploration** 
 
   * Downloaded raw CSV files containing millions of trip records.
-
   * Reviewed schema for relevant attributes: start/end times, station IDs, membership status, trip duration.
 
 **Data Preprocessing & Cleaning (SQL)** 
 
   * Handled missing and inconsistent data entries (e.g., null station names, negative durations).
-
   * Normalized timestamps, standardized location formats, and created derived fields (e.g., day of week, ride length in minutes).
-
   * Merged station metadata to enrich trip records with location details.
 
 **Exploratory Data Analysis (SQL)**
 
   * Queried trends over time, such as monthly usage and differences between member and casual users.
-
   * Calculated KPIs: average trip duration, most/least used stations, peak hours, and trip frequency by weekday.
-
   * Identified seasonal trends and anomalies (e.g., drastic drops or spikes in ridership).
 
 **Data Visualization (Power BI)** : Built interactive dashboards highlighting:
 
   * Rider demographics and membership patterns.
-
   * Station heatmaps by usage frequency.
-
   * Time-based visualizations (hourly, daily, seasonal).
-
   * Included slicers and filters to let users explore specific neighborhoods or time frames.
 
 ## Key Findings
 *(coming soon)*
-
 
 ## Business Value & Recommendations
 *(coming soon)*
